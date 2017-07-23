@@ -49,6 +49,18 @@ navigate to localhost:8000 in your web browser
 
 
 
+
+## Running the app
+
+`gunicorn app:app`
+navigate to localhost:8000 in your web browser
+
+## deploying to Heroku
++ staging : 
++ production :
+
+
+
 ## Implemented features
 - backend
   - [x] homepage hook

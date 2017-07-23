@@ -5,21 +5,7 @@ from werkzeug import generate_password_hash, check_password_hash
 import os
 
 
-@app.route('/')
-@app.route('/index')
-@app.route('/main')
-def index():
-	'''
-	Home Page link
-	'''
-	return render_template('index.html')
 
-@app.route('/showSignUp')
-def showSignUp():
-	'''
-	Sign-up Page link
-	'''
-	return render_template('signup.html')
 
 
 
@@ -42,6 +28,7 @@ def signUp():
 			reason = str(exc)
 			print ("Message: " , reason)
 			return json.dumps({'error':str(reason)})
+
 
 
 
