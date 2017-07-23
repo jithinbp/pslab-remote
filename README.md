@@ -50,7 +50,7 @@ navigate to localhost:8000 in your web browser
 
 
 
-## Running the app
+## Running the app locally
 
 `gunicorn app:app`
 navigate to localhost:8000 in your web browser
