@@ -69,6 +69,30 @@ def logout():
 
 
 
+
+@app.route('/signUp',methods=['POST'])
+def signUp():
+	# read the posted values from the UI
+	_name = request.form['inputName']
+	_email = request.form['inputEmail']
+	_password = request.form['inputPassword']
+
+	# validate the received values
+	if _name and _email and _password:
+		_hashed_password = generate_password_hash(_password)
+		newUser = User(_email, _name,_hashed_password)
+		try:
+			db.session.add(newUser)
+			db.session.commit()
+			return json.dumps({'message':'User %s created successfully. e-mail:%s !'%(_name,_email)})
+		except Exception as exc:
+			reason = str(exc)
+			print "Message: " , reason
+			return json.dumps({'error':str(reason)})
+
+		print (User.query.all())
+
+
 """
 #Pending migration to postgres
 
@@ -116,6 +140,7 @@ for a in dir(I):
 	attr = getattr(I, a)
 	if inspect.ismethod(attr) and a!='__init__':
 		functionList[a] = attr
+
 
 
 
